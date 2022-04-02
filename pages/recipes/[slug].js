@@ -2,6 +2,7 @@ import { getContentfulClient } from '../../utils/helpers';
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Skeleton from '../../components/Skeleton';
+import Head from '../../components/Head';
 
 const RecipeDetails = ({ recipe }) => {
   if (!recipe) {
@@ -11,6 +12,7 @@ const RecipeDetails = ({ recipe }) => {
   const { featuredImage, title, cookingTime, ingredients, method } = recipe.fields;
   return (
     <div className="banner">
+      <Head title={title} />
       <Image
         src={`http:${featuredImage.fields.file.url}`}
         width={featuredImage.fields.file.details.image.width}

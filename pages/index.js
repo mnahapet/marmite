@@ -1,10 +1,12 @@
 import { getContentfulClient } from '../utils/helpers';
 import RecipeCard from '../components/RecipeCard';
+import Head from '../components/Head';
 
 export default function Recipes({ recipes }) {
   // console.log(recipes);
   return (
     <div className="recipe-list">
+      <Head title="Home" />
       {recipes.map(recipe => (
         <RecipeCard key={recipe.sys.id} recipe={recipe} />
       ))}
