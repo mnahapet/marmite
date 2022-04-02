@@ -1,8 +1,13 @@
 import { getContentfulClient } from '../../utils/helpers';
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Skeleton from '../../components/Skeleton';
 
 const RecipeDetails = ({ recipe }) => {
+  if (!recipe) {
+    return <Skeleton />;
+  }
+
   const { featuredImage, title, cookingTime, ingredients, method } = recipe.fields;
   return (
     <div className="banner">
@@ -66,7 +71,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false
+    fallback: true
   };
 };
 
